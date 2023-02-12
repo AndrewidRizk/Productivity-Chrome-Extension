@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((data)=>{
         switch(data.event){
             case 'onStart':
                 //console.log("duration received: ", data.duration);
-                createAlarm();
+                createAlarm(data);
                 let data2 = {
                     "previousActivity": 69,
                     "zoneOuts": 0
@@ -23,13 +23,13 @@ chrome.runtime.onMessage.addListener((data)=>{
         }   
 })
 
-const createAlarm = () => {
+const createAlarm = (data) => {
     console.log("ALARM STARTED")
     chrome.alarms.create(ALARM_JOB_NAME, {periodInMinutes: 1.0})
-    // setTimeout(function() {
-    //     console.log("ALARM CLOSED AFTER 5 SECS");
-    //     chrome.alarms.clearAll();
-    //   }, 5000);
+    setTimeout(function() {
+        console.log("ALARM CLOSED AFTER 10 SECS");
+        chrome.alarms.clearAll();
+      }, (data.hour * 60 * 60) + (data.min * 60) * 1000);
 }
 
 const stopAlarm = () => {
@@ -40,10 +40,9 @@ const stopAlarm = () => {
 chrome.alarms.onAlarm.addListener(async () => {
     console.log("ATTENTIONNNN onAlarm scheduled code running...")
 
-    
-
     let currentActivity ;
     currentActivity = await fetchProductive();
+    console.log("Current Word Count: " + currentActivity);
 
     chrome.storage.local.get(["previousActivity", "zoneOuts"], (result) => {
         const {previousActivity, zoneOuts} = result;

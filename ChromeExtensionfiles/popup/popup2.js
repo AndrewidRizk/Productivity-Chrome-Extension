@@ -3,8 +3,6 @@ const goalHour = document.getElementById("goalHour");
 const goalMin = document.getElementById("goalMin");
 goalHour.innerHTML = localStorage.getItem('hour');
 goalMin.innerHTML = localStorage.getItem('min');
-// console.log(localStorage.getItem('hour')) ///TO ACCESS HOURS INPUTTED IN PREVIOUS PAGE
-// console.log(localStorage.getItem('min'))  ///SAME HERE BUT WITH MINUTES
 
 /*
 TO-DO:
@@ -36,4 +34,11 @@ setInterval(function() {
 
   minutesElement.textContent = (minutes < 10 ? "0" : "") + minutes;
   secondsElement.textContent = (seconds < 10 ? "0" : "") + seconds;
+
+  if (totalSeconds == (localStorage.getItem('hour') * 60 * 60 + localStorage.getItem('min') * 60)){
+    console.log("time is up")
+    window.location.href = "popup3.html"; 
+  }
+
+
 }, 1000);
