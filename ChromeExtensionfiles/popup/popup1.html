@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome test</title>
+    <link rel="stylesheet" href = "bulma.min.css" />
+    <style>
+        input[type="number"] {
+          width: 80px;
+          height: 30px;
+          font-size: 20px;
+          padding: 5px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+      </style>
+</head>
+<body>
+    
+    <div class="container m-3">
+        <h1 class="title">Lets begin typing!</h1>
+    </div>
+
+
+    <div class="container m-3">
+        <form>
+            
+
+            <label for="duration">Hour(s):</label><br>
+            <input type="number" id="hour" name="hour" min="0" max="6" value="00"><br>
+            <label for="duration">Minute(s):</label><br>
+            <input type="number" id="min" name="min" min="0" max="59" value="00"><br><br>
+        </form>
+
+          
+
+        <button class = "button is-success is-fullwidth" id="startButton" href="popup2.html" >Save & Start</button>
+    </div>
+
+</body>
+<script src = "popup1.js"></script>
+
+</html>
